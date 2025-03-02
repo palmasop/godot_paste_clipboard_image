@@ -4,21 +4,10 @@ A Godot editor plugin that allows pasting image from clipboard directly into the
 
 ## Installation
 
-### with manual download
-
 1. Download the latest release
 2. Extract the `addons` folder to your project directory
-
-### with asset store
-
-1. Go to godot assets store
-2. Install the plugin
-
-### enable the plugin
-
-3. Build the C# Project
-4. Enable the plugin in `Project Settings -> Plugins`
-5. Use Ctrl+V to paste image
+3. Enable the plugin in `Project Settings -> Plugins`
+4. Use Ctrl+V to paste image
 
 ## Requirements
 
