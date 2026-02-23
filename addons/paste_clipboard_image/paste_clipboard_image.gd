@@ -43,7 +43,9 @@ func _paste_clipboard_image() -> bool:
         _pending_image = null
         return false
     
-    var contexted_path: String = _file_dialog.current_path
+    var root := get_editor_interface().get_edited_scene_root()
+    var scene_path := root.get_scene_file_path() if root else ""
+    var contexted_path: String = scene_path if scene_path != "" else _file_dialog.current_path
     var selected_paths: PackedStringArray = EditorInterface.get_selected_paths()
     
     for selected_path: String in selected_paths:
