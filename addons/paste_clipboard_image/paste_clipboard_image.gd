@@ -43,6 +43,29 @@ func _paste_clipboard_image() -> bool:
         _pending_image = null
         return false
     
+    var contexted_path: String = _file_dialog.current_path
+    var selected_paths: PackedStringArray = EditorInterface.get_selected_paths()
+    
+    for selected_path: String in selected_paths:
+        
+        var dir_access := DirAccess.open(selected_path)
+        
+        if is_instance_valid(dir_access):
+            
+            contexted_path = selected_path
+            break
+        
+        dir_access = DirAccess.open(selected_path.get_base_dir())
+        
+        if is_instance_valid(dir_access):
+            
+            contexted_path = selected_path
+            break
+        
+        pass
+    
+    _file_dialog.current_path = contexted_path
+    
     var default_name = "ClipboardImage_%s.png" % Time.get_datetime_string_from_system().replace(":", "").replace(" ", "_")
     _file_dialog.current_file = default_name
     _file_dialog.popup_centered(Vector2i(800, 600))
